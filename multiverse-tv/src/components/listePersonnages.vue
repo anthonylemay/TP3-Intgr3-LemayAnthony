@@ -1,17 +1,19 @@
 <template>
   <section class="flex center">
     <div class="grid container">
-      <div class="dudeCard" v-for="personnage in personnages" :key="personnage.id">
+      <div class="dudeCard" v-for="personnage in personnages" :key="personnage.id" >
         <img :src="personnage.image" :alt="personnage.name" />
         <div class="flexCol">
           <h2>{{ personnage.name }}</h2>
           <p v-if="personnage.status">État: {{ personnage.status }}</p>
           <!-- Ajouter ici bouton favoris ***** -->
           <p v-if="personnage.species">Espèce: {{ personnage.species }}</p>
-          <button><RouterLink :to="{ name: 'ficheZoom', params: { id: personnage.id }}">Voir les détails</RouterLink></button>
+          <button @click="openModal(personnage)">Zoom</button>
+          <button><RouterLink :to="{ name: 'fichePersonnage', params: { id: personnage.id }}">Fiche complète</RouterLink></button>
         </div>
       </div>    
     </div>
+    <ficheZoom :personnage="selectedPersonnage" :isVisible="showModal" @update:isVisible="showModal = $event" />
   </section>
 </template>
 
@@ -91,12 +93,21 @@ button:hover{
 <script setup>
 
 import useFetchListePersonnagesRandom from '../composables/listePersonnagesRandom';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import ficheZoom from '../components/modals/ficheZoom.vue';
 const { personnages, chargerListePersonnages } = useFetchListePersonnagesRandom();
+
+const showModal = ref(false);
+const selectedPersonnage = ref({});
 
 onMounted(async () => {
   await chargerListePersonnages();
 });
+
+function openModal(personnage) {
+  selectedPersonnage.value = personnage;
+  showModal.value = true;
+}
 
 </script>
 
