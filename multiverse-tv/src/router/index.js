@@ -4,6 +4,7 @@ import Personnages from '../views/Personnages.vue'
 import Favoris from '../views/Favoris.vue'
 import Recherche from '../views/Recherche.vue'
 import succesInfoLettre from '../views/succesInfoLettre.vue'
+import ficheZoom from '../views/ficheZoom.vue'
 
 
 const router = createRouter({
@@ -18,6 +19,11 @@ const router = createRouter({
       path: '/personnages',
       name: 'personnages',
       component: Personnages
+    },
+    {
+      path: '/personnages/:id',
+      name: 'ficheZoom',
+      component: ficheZoom
     },
     {
       path: '/favoris',
