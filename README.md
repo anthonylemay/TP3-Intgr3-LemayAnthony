@@ -9,6 +9,12 @@ Images**
 Logo:
 https://en.m.wikipedia.org/wiki/File:Rick_and_Morty.svg
 
+Favicon - Delirio Colorista
+https://www.domestika.org/en/projects/458388-rick-and-morty-icon-set
+
+Pickle Rick - Half A Pixel
+https://www.deviantart.com/halfapixel/art/Pickle-Rick-706843832
+
 
 Accueil:
 

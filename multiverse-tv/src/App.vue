@@ -1,85 +1,67 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Header  from './components/Header.vue'
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <Header/>
   <RouterView />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+@font-face{
+  font-family: get-schwifty;
+  src: url(./assets/fonts/get_schwifty.ttf);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+@font-face{
+  font-family: space-grotesk;
+  src: url(./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf);
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+@font-face{
+  font-family: jost;
+  src: url(./assets/fonts/Jost-VariableFont_wght.ttf);
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+@font-face{
+  font-family: jost-italic;
+  src: url(./assets/fonts/Jost-Italic-VariableFont_wght.ttf);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+html{
+    background-color: #011B1A;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+#app {
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
 }
 
-nav a:first-of-type {
-  border: 0;
+.container{
+  margin: 0 auto;
+  max-width: 1280px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.flex{
+  display:flex;
 }
+
+.flexCol{
+  display:flex;
+  flex-direction: column;
+}
+
+.flexRow{
+  display:flex;
+  flex-direction: row;
+}
+
+.tonic{
+  font-family: get-schwifty;
+}
+
 </style>
