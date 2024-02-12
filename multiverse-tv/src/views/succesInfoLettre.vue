@@ -8,8 +8,11 @@
 <section class="hero">
     <div class="heroContent">
         <div class="heroTextCard">
-            <h1>INSCRIPTION RÉUSSIE!</h1>
-            <p>Vous receverez un courriel de confirmation sous peu. À bientôt!</p>
+            <div class="flexRow">
+                <img class="iconSpace" src="../assets/img/notification.svg" alt="icône de notification">
+                <h1>INSCRIPTION RÉUSSIE!</h1>
+            </div>
+            <p>Vous recevrez un courriel de confirmation sous peu. À bientôt!</p>
             <div class="flex flexRow btnLine">
                     <RouterLink :to="{name:'accueil'}" class="btnNav">Retour à l'accueil</RouterLink>
                 </div>
@@ -82,6 +85,10 @@ p{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.iconSpace{
+    margin:1rem;
 }
 
 

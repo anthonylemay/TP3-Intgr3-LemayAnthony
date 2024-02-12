@@ -1,33 +1,108 @@
 <template>
     <form @submit.prevent="valider">
-      <div class="sectionForm">
-        <div class="labelIn">
-          <label for="prenom">Votre prénom</label>
-          <input type="text" id="prenom" v-model.trim="newSub.prenom" />
-        </div>
-      </div>
-      <div class="sectionForm">
-        <div class="labelIn">
-          <label for="nom">Votre nom</label>
-          <input type="text" id="nom" v-model.trim="newSub.nom" />
-        </div>
-      </div>
-      <div class="sectionForm">
-        <div class="labelIn">
+
+        <div class="flexRow"> 
+            <div class="flexCol formName">
+                <label for="prenom">Votre prénom</label>
+                <input type="text" id="prenom" v-model.trim="newSub.prenom" />
+                <p class="error" v-if="newSub.erreurs.prenom">Veuillez inscrire votre prénom.</p>
+            </div>
+            <div class="flexCol formName">
+                <label for="nom">Votre nom</label>
+                <input type="text" id="nom" v-model.trim="newSub.nom" />
+                <p class="error" v-if="newSub.erreurs.nom">Veuillez inscrire votre nom.</p>
+            </div>
+       </div>
+        
+        <div class="flexCol">
           <label for="email">Votre courriel</label>
           <input type="email" id="email" v-model.trim="newSub.email" />
+          <p class="error" v-if="newSub.erreurs.email">Veuillez inscrire votre courriel.</p>
         </div>
-      </div>
-      <div class="sectionForm">
-        <div class="labelIn">
-          <label for="check">Vous consentez à recevoir des offres et nouvelles de notre site</label>
-          <input type="checkbox" id="check" v-model="newSub.checkBox" />
+
+        <div>
+          <label class="checkBoxText" for="check">Vous consentez à recevoir des offres et des nouvelles de notre site :</label>
+          <input class="checkBox" type="checkbox" id="check" v-model="newSub.checkBox" />
+          <p class="error" v-if="newSub.erreurs.checkBox">Veuillez valider votre consentement.</p>
         </div>
-      </div>
       <button type="submit">S'inscrire</button>
     </form>
   </template>
   
+  <style scoped>
+  
+
+  form{
+    font-family: jost;
+  font-weight: bold;
+  color:white;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-items:center;
+}
+
+
+form input{
+  font-family: jost;
+  font-weight: bold;
+  font-size:2rem;
+  color:black;
+  padding:1rem;
+  border: solid 0px;
+  border-radius: .25rem;
+
+}
+
+form .checkBoxText{
+  font-size:1.25rem;
+}
+
+form .checkBox{
+  transform: scale(3); /* Adjust the scale value as needed */
+  margin: 2rem; /* To ensure there's space around the scaled checkbox */
+  cursor: pointer; 
+}
+
+.formName{
+  margin:1rem;
+}
+
+
+
+
+form button{
+  all: unset;
+  font-family: jost;
+    font-weight:bold;
+    color: white;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: rgba(222, 222, 222, 0.2);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 27px 26px rgba(0,0,0,0.1);
+    border-radius: 2rem;
+    cursor: pointer; 
+
+}
+
+form button:hover{
+    padding:2.5rem;
+    background-color: rgba(66,202,129, 0.8)
+}
+
+
+.error {
+  color: rgb(255, 168, 168);
+  text-align:center;
+  padding:1rem;
+}
+
+  
+  </style>
+
 
 
 
@@ -53,6 +128,7 @@
   const router = useRouter()
   
   function valider() {
+    
     const formData = {
       prenom: newSub.prenom,
       nom: newSub.nom,

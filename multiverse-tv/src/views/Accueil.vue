@@ -25,7 +25,10 @@ import Infolettre from '../components/Infolettre.vue'
     <section id="newsletter" class="hero2">
         <div class="heroContent">
             <div class="heroTextCard">
+                <div class="flexRow">
+                <img class="iconSpace" src="../assets/img/notification.svg" alt="icône de notification">
                 <h1>INSCRIPTION AUX NOUVELLES</h1>
+                </div>
                 <p>Inscrivez-vous ci-dessous pour être à l'affût des nouvelles de notre site.</p>
                 <Infolettre/>
             </div>
@@ -75,7 +78,7 @@ p{
 }
 
 .heroContent{
-    padding: 25rem 0;
+    padding: 15rem 0;
     text-align:center;
     font-size:2rem;
 }
@@ -110,6 +113,10 @@ p{
 
 .spacer{
     height:2rem;
+}
+
+.iconSpace{
+    margin:1rem;
 }
 
 </style>
