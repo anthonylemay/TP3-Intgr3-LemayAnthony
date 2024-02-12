@@ -1,37 +1,55 @@
 <template>
-  <section class="flex center">
+  <section class="flex">
     <div class="grid container">
-      <div class="dudeCard" v-for="personnage in personnages" :key="personnage.id" >
-        <img :src="personnage.image" :alt="personnage.name" />
+      <div class="cartePerso" v-for="personnage in personnages" :key="personnage.id" >
+        <img class="img" :src="personnage.image" :alt="personnage.name" @click="ouvrirZoomModal(personnage)"/>
+        <div class="openPopUp" @click="ouvrirZoomModal(personnage)" > 
+          <img src="../assets/img/zoomIcon.svg">
+          </div>
         <div class="flexCol">
           <h2>{{ personnage.name }}</h2>
           <p v-if="personnage.status">État: {{ personnage.status }}</p>
-          <!-- Ajouter ici bouton favoris ***** -->
           <p v-if="personnage.species">Espèce: {{ personnage.species }}</p>
-          <button @click="openModal(personnage)">Zoom</button>
+                    <!-- Ajouter ici bouton favoris ***** -->
           <button><RouterLink :to="{ name: 'fichePersonnage', params: { id: personnage.id }}">Fiche complète</RouterLink></button>
         </div>
       </div>    
     </div>
-    <ficheZoom :personnage="selectedPersonnage" :isVisible="showModal" @update:isVisible="showModal = $event" />
+    <ficheZoom :personnage="targetPersonnage" :isVisible="showModal" @update:isVisible="showModal = $event" />
   </section>
 </template>
 
-  
-
 <style scoped>
 
-.center{
-  align-items:center;
-}
+.openPopUp{
+  position:absolute;
+  top: 0;
+  right:0;
+    width:40px;
+    border-radius:1.25rem;
+    cursor: pointer;
+    padding:1rem;
+    margin:.5rem;
+    box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
+  }
+
+  .openPopUp:hover{
+    padding:2rem;
+  }
+  .openPopUp img{
+    width:100%;
+  }
+
+
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: .5rem;
+  gap: .25rem;
+  width:100%;
   
 }
 
-.dudeCard{
+.cartePerso{
   margin: .5rem .5rem;
     display:flex;
     flex-direction: column;
@@ -41,22 +59,29 @@
     border-radius: 1.25rem;
 }
 
-.dudeCard img{
+.cartePerso img.img{
   border-radius: 1.25rem 1.25rem 0 0;
   object-fit: cover;
+  position: relative;
+  cursor:pointer;
 }
 
-.dudeCard .flexCol{
+.cartePerso img.img:hover{
+  margin:.5rem;
+  border-radius: 1.25rem;
+}
+
+.cartePerso .flexCol{
   padding:1rem
 }
 
-.dudeCard h2{
+.cartePerso h2{
   font-size:2.25rem;
   color:white;
 }
 
 
-.dudeCard p{
+.cartePerso p{
   color:white;
   font-size: 1.5rem;
 }
@@ -64,7 +89,7 @@
 a{
   all: unset;
 }
-.dudeCard button{
+.cartePerso button{
   all: unset;
   font-family: jost;
     font-weight:bold;
@@ -98,14 +123,14 @@ import ficheZoom from '../components/modals/ficheZoom.vue';
 const { personnages, chargerListePersonnages } = useFetchListePersonnagesRandom();
 
 const showModal = ref(false);
-const selectedPersonnage = ref({});
+const targetPersonnage = ref({});
 
 onMounted(async () => {
   await chargerListePersonnages();
 });
 
-function openModal(personnage) {
-  selectedPersonnage.value = personnage;
+function ouvrirZoomModal(personnage) {
+  targetPersonnage.value = personnage;
   showModal.value = true;
 }
 
