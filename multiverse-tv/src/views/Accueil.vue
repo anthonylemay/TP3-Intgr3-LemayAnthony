@@ -9,7 +9,6 @@ import infolettre from '../components/infolettre.vue';
 <template>
 <main>
     <heroAccueil/>
-    <div class="spacer"></div>
     <infolettre/>
 </main>
 </template>
@@ -17,10 +16,6 @@ import infolettre from '../components/infolettre.vue';
 
 <style scoped>
 
-
-.spacer{
-    height:2rem;
-}
 
 
 </style>

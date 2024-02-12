@@ -1,22 +1,53 @@
 <template>
-    
-    <div>
+    <main>
+    <div class="searchHeader">
+      <h1>RECHERCHE PAR NOM</h1>
       <input type="text" id="nomPersonnage" placeholder="Tapez un nom. Ex. « Rick »" v-model="inputRecherche">
       <h3 v-if="listeResultats.length > 0"> Personnages trouvés: {{ listeResultats.length }}</h3>
   </div>
     
-    <hr>
-
     <div class="grid container">
       <cartePersonnage v-for="personnage in listeResultats" :key="personnage.name" :personnage="personnage" @ouvrirPopUp="ouvrirZoomModal"/>
       <ficheZoom :personnage="selectedPersonnage" :isVisible="showModal" @update:isVisible="togglePopUpVisibility"/>
     </div>
     
     <p class="error" v-if="aucunResultatMsg !== ''">{{  aucunResultatMsg }}</p>
-
+  </main>
 </template>
 
-<style setup>
+<style scoped>
+
+
+h1{
+  font-size: 3rem;
+}
+
+h3{
+  font-family: space-grotesk;
+  font-weight:bold;
+  color:white;
+}
+
+.searchHeader{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding:3rem;
+}
+
+input{
+  all: unset;
+  border-radius:.5rem;
+  padding:1rem;
+  font-family: space-grotesk;
+  font-weight:bold;
+  font-size:2rem;
+  color: rgb(133, 133, 133);
+  min-width: 450px;
+  background-color:rgb(207, 236, 255)
+}
+
 .error {
   color: rgb(255, 168, 168);
   text-align:center;
@@ -24,6 +55,7 @@
 }
 
 .grid{
+    min-height:500px;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .25rem;

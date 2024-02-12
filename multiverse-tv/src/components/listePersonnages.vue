@@ -1,5 +1,6 @@
 <template>
-  <section class="flex">
+  <section class="flex flexCol">
+    <h1>LISTE DE PERSONNAGES ALÉATOIRE</h1>
     <div class="grid container">
       <cartePersonnage v-for="personnage in personnages" :key="personnage.name" :personnage="personnage" @ouvrirPopUp="ouvrirZoomModal"/>
       <ficheZoom :personnage="targetPersonnage" :isVisible="ouvrirPopUp" @update:isVisible="togglePopUpVisibility" />    
@@ -10,6 +11,11 @@
 
 <style scoped>
 
+
+h1{
+  text-align:center;
+  font-size: 3rem;
+}
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
