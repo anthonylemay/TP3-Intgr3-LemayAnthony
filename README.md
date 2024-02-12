@@ -1,6 +1,14 @@
 # TP3-Intgr3-LemayAnthony
 
 
+OUTILS DE TRAVAIL:
+
+TRELLO:
+https://trello.com/invite/b/nJhNgcMB/ATTI20c4c891edcd41dcbd44ef582ffc22c3BE4F246B/tp3-vuejs
+
+
+
+
 
 CRÉDITS
 

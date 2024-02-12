@@ -1,4 +1,14 @@
 <template>
+
+<section id="newsletter" class="hero2">
+        <div class="heroContent">
+            <div class="heroTextCard">
+                <div class="flexRow">
+                <img class="iconSpace" src="../assets/img/notification.svg" alt="icône de notification">
+                <h2>INSCRIPTION AUX NOUVELLES</h2>
+                </div>
+                <p>Soyez à l'affût des nouveautés sur notre site!</p>
+
     <form @submit.prevent="valider">
 
         <div class="flexRow"> 
@@ -27,12 +37,52 @@
         </div>
       <button type="submit">S'inscrire</button>
     </form>
+  
+            </div>
+        </div>
+    </section>
   </template>
-  
-  <style scoped>
-  
 
-  form{
+  
+<style scoped>
+
+
+p{
+    color:white;
+    padding:1rem;
+}
+
+.heroContent{
+    padding: 15rem 0;
+    text-align:center;
+    font-size:2rem;
+}
+
+.heroTextCard{
+    margin: 0 auto;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    background-color:rgba(100,100,100,0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 27px 26px rgba(0,0,0,0.2);
+    border-radius: 2rem;
+    width:60%;
+}
+
+.hero2{
+    border-radius:2rem;
+    background-image: url('../assets/img/accueil-2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.iconSpace{
+    margin:1rem;
+}
+
+form{
     font-family: jost;
   font-weight: bold;
   color:white;
@@ -67,8 +117,6 @@ form .checkBox{
 .formName{
   margin:1rem;
 }
-
-
 
 
 form button{

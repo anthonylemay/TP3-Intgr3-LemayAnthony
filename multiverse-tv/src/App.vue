@@ -67,7 +67,7 @@ body{
   font-family: get-schwifty;
 }
 
-h1{
+h1, h2{
     font-family:jost;
     font-weight: bold;
     color:white;
