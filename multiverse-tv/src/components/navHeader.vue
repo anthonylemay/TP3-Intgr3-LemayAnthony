@@ -2,7 +2,7 @@
   <header>
       <nav class="container flex">
         <div class="flexRow logoHeader">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+        <img alt="Rick And Morty - logotype officiel" class="logo" src="@/assets/logo.svg" width="125" height="125" />
         <span class="tonic">Le Pickle Rick API</span>
         </div>
         <div class=" flexRow navBar">
@@ -67,5 +67,8 @@ nav a.router-link-exact-active:hover {
   color:#aefeff;
 }
 
+.logo{
+  min-width:300px;
+}
 
 </style>
