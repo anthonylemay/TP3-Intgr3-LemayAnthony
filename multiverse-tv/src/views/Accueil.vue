@@ -1,6 +1,6 @@
 <script setup>
 import heroAccueil from '@/components/heroAccueil.vue';
-import Infolettre from '../components/Infolettre.vue';
+import infolettre from '../components/infolettre.vue';
 
 
 
@@ -10,7 +10,7 @@ import Infolettre from '../components/Infolettre.vue';
 <main>
     <heroAccueil/>
     <div class="spacer"></div>
-    <Infolettre/>
+    <infolettre/>
 </main>
 </template>
 

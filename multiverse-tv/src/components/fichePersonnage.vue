@@ -98,13 +98,13 @@ const { personnage, chargerDetailsPersonnage } = useFetchPersonnageDetails();
 const route = useRoute();
 const router = useRouter();
 
-const idActuel = ref(route.params.id);
-
 onMounted(() => {
 chargerDetailsPersonnage(route.params.id);
 });
 
-watch(() => route.params.id, (newId) => {
+const idActuel = ref(route.params.id); // Pour utiliser les flèches de navigation.
+
+watch(() => route.params.id, (newId) => { // Changer le id en temps réel sur le click, afin de pouvoir ensuite fetch la nouvelle page plus bas.
 idActuel.value = newId;
 chargerDetailsPersonnage(newId);
 });
@@ -114,5 +114,9 @@ function naviguerPersonnages(direction) {
   const nextId = parseInt(idActuel.value) + direction; // calcul du nouvel ID
   router.push({ name: 'fichePersonnage', params: { id: nextId } }); // Navigation à la nouvelle route
 }
+
+const props = defineProps({
+  personnage: Object
+})
 
 </script>
