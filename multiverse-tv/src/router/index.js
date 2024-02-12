@@ -3,6 +3,7 @@ import Accueil from '../views/Accueil.vue'
 import Personnages from '../views/Personnages.vue'
 import Favoris from '../views/Favoris.vue'
 import Recherche from '../views/Recherche.vue'
+import succesInfoLettre from '../views/succesInfoLettre.vue'
 
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/recherche',
       name: 'recherche',
       component: Recherche
+    },
+    {
+      path: '/succes-infolettre',
+      name: 'success-infolettre',
+      component: succesInfoLettre
     }
   ]
 })

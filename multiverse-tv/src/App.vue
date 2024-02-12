@@ -34,12 +34,13 @@ import navFooter from './components/navFooter.vue';
 
 html{
     background-color: #011B1A;
+    margin:0rem;
+    padding:0rem;
 }
 
-#app {
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+body{
+  margin:0rem;
+    padding:0rem;
 }
 
 .container{
@@ -64,6 +65,17 @@ html{
 
 .tonic{
   font-family: get-schwifty;
+}
+
+h1{
+    font-family:jost;
+    font-weight: bold;
+    color:white;
+}
+
+p{
+    font-family: space-grotesk;
+    font-weight:bold;
 }
 
 </style>
