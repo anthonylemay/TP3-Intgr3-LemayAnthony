@@ -1,7 +1,7 @@
 <script setup>
-import favoritesList from '../components/favoritesList.vue';
+import favoritesList from "../components/favoritesList.vue";
 </script>
 
 <template>
-<favoritesList/>
+  <favoritesList />
 </template>

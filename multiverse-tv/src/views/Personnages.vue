@@ -1,14 +1,10 @@
 <template>
-    <main>
-        <listePersonnages/>
-    </main>
+  <main>
+    <listePersonnages />
+  </main>
 </template>
 
-<style>
-
-</style>
+<style></style>
 <script setup>
-
-import listePersonnages from '../components/listePersonnages.vue';
-
+import listePersonnages from "../components/listePersonnages.vue";
 </script>

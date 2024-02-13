@@ -1,7 +1,7 @@
 <template>
-<fichePersonnage/>
+  <fichePersonnage />
 </template>
 
 <script setup>
-import fichePersonnage from '../components/fichePersonnage.vue'
+import fichePersonnage from "../components/fichePersonnage.vue";
 </script>

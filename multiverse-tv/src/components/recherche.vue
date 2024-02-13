@@ -3,7 +3,11 @@
     <div class="searchHeader">
       <h1>RECHERCHE PAR NOM</h1>
       <input type="text" id="nomPersonnage" placeholder="Tapez un nom. Ex. « Rick »" v-model="inputRecherche">
-      <h3 v-if="listeResultats.length > 0"> Personnages trouvés: {{ listeResultats.length }}</h3>
+    <div class="flexRow" v-if="listeResultats.length > 0">
+      <img class="alien" src="../assets/img/alien.svg" alt="tête alien">
+      <h3 > Personnages trouvés: {{ listeResultats.length }}</h3>
+    </div>
+      
   </div>
     
     <div class="grid container">
@@ -17,6 +21,9 @@
 
 <style scoped>
 
+.alien{
+  margin:.25rem;
+}
 .minHeight{
     min-height:100vh;
 }

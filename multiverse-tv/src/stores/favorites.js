@@ -29,7 +29,7 @@ export const useFavoritesStore = defineStore('favorites', {
 
 export const useCharacterStore = defineStore('characters', {
     state: () => ({
-      characterDetails: {}, // Object to cache character details by ID
+      characterDetails: {}, // Object pour cacher le personnage selon l'ID
     }),
     actions: {
       cacheCharacter(character) {

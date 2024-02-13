@@ -1,4 +1,4 @@
-import { useFavoritesStore } from '@/stores/favorites';
+import { useFavoritesStore } from "@/stores/favorites";
 
 export default function useToggleFavorite() {
   const store = useFavoritesStore();
@@ -12,6 +12,6 @@ export default function useToggleFavorite() {
     addFavorite,
     removeFavorite,
     toggleFavorite,
-    isFavorite
-  }
+    isFavorite,
+  };
 }
