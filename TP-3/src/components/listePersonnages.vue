@@ -57,3 +57,4 @@ onMounted(async () => {
   await chargerListePersonnages();
 });
 </script>
+./modals/ficheZoom.vue

@@ -102,3 +102,4 @@ function togglePopUpVisibility(visible) {
 
 onMounted(fetchPersonnagesFavoris);
 </script>
+./modals/ficheZoom.vue
