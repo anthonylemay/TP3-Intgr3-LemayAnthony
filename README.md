@@ -27,6 +27,8 @@ Site Web: [https://rickandmortyapi.com/](https://rickandmortyapi.com/)
 
 ## Outils de Travail
 
+- **GitHub** pour la gestion du versionnage: [Accéder à GitHub](https://github.com/anthonylemay/TP3-Intgr3-LemayAnthony)
+
 - **Trello** pour la gestion de projet: [Accéder à Trello](https://trello.com/invite/b/nJhNgcMB/ATTI20c4c891edcd41dcbd44ef582ffc22c3BE4F246B/tp3-vuejs)
 
 ## Crédits
