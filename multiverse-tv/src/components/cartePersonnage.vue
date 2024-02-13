@@ -1,9 +1,14 @@
 <template>
         <div class="cartePerso">
           <img class="img" :src="personnage.image" :alt="personnage.name" @click="handleClick"/>
-          <div class="openPopUp" @click="handleClick" > 
+          <div class="popUp" @click="handleClick" > 
             <img src="../assets/img/zoomIcon.svg">
             </div>
+            <div class="favorites" @click="handleFavClick" > 
+            <img v-if="(favorite)" src="../assets/img/favLike.svg">
+            <img v-if="(!favorite)" src="../assets/img/favDislike.svg">
+            </div>
+          
           <div class="flexCol">
             <h2>{{ personnage.name }}</h2>
             <p v-if="personnage.status">État: {{ personnage.status }}</p>
@@ -16,7 +21,7 @@
   
   <style scoped>
   
-  .openPopUp{
+  .popUp{
     position:absolute;
     top: 0;
     right:0;
@@ -28,10 +33,10 @@
       box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
     }
   
-    .openPopUp:hover{
+    .popUp:hover{
       padding:2rem;
     }
-    .openPopUp img{
+    .popUp img{
       width:100%;
     }
   
@@ -104,8 +109,11 @@
   
   </style>
   
+
+
   <script setup>
-  import { defineProps, defineEmits} from 'vue';
+  import { defineProps, defineEmits, computed} from 'vue';
+import useToggleFavorite from '@/composables/favorites';
 
   const props = defineProps({
     personnage: Object
@@ -117,6 +125,18 @@
     emit('ouvrirPopUp', props.personnage);
   }
 
+  const { toggleFavorite, isFavorite } = useToggleFavorite();
+  const favorite = computed(() => isFavorite(props.personnage.id));
+
+  function handleFavClick() {
+  toggleFavorite(props.personnage.id);
+  // Prévenir le pop-up
+  event.stopPropagation();
+}
+
+  
+  
+  
   //console.log(props.personnage); // debug
   
   </script>

@@ -1,7 +1,9 @@
 import { ref } from 'vue';
+import { useFavoritesStore } from '@/stores/favorites'; 
 
-export default function useFetchListePersonnagesRandom() {
+export default function useFetchListeRandom() {
   const personnages = ref([]);
+  const store = useFavoritesStore();
 
   const chargerListePersonnages = async () => {
     try {
@@ -24,7 +26,9 @@ export default function useFetchListePersonnagesRandom() {
         let randomIndex = Math.floor(Math.random() * personnagesPageAleatoire.length);
         if (!i.has(randomIndex)) {
           i.add(randomIndex);
-          personnagesAleatoires.push(personnagesPageAleatoire[randomIndex]);
+          const personnage = personnagesPageAleatoire[randomIndex];
+          personnage.favorite = store.isFavorite(personnage.id); // regarder pour les favoris
+          personnagesAleatoires.push(personnage);
         }
       }
 
@@ -35,5 +39,7 @@ export default function useFetchListePersonnagesRandom() {
   };
 
   // Retourne les valeurs pour être ensuite facile à décortiquer.
-  return { personnages, chargerListePersonnages };
+  return { personnages,
+    chargerListePersonnages
+  };
 }

@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-export function useFetchPersonnageDetails() {
+export function useFetchPersoDetails() {
   const personnage = ref(null); // pour storer l'information complète du personnage.
 
   // On cherche l'info par id
@@ -14,5 +14,7 @@ export function useFetchPersonnageDetails() {
     }
   };
 
-  return { personnage, chargerDetailsPersonnage };
+  return { personnage,
+    chargerDetailsPersonnage
+  };
 }

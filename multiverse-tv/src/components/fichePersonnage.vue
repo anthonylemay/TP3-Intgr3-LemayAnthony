@@ -90,11 +90,11 @@ button:hover{
 
 
 <script setup>
-import { useFetchPersonnageDetails } from '../composables/fichePersonnage';
+import { useFetchPersoDetails } from '../composables/fichePersonnage';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-const { personnage, chargerDetailsPersonnage } = useFetchPersonnageDetails();
+const { personnage, chargerDetailsPersonnage } = useFetchPersoDetails();
 const route = useRoute();
 const router = useRouter();
 
@@ -102,9 +102,9 @@ onMounted(() => {
 chargerDetailsPersonnage(route.params.id);
 });
 
-const idActuel = ref(route.params.id); // Pour utiliser les flèches de navigation.
+const idActuel = ref(route.params.id); // Pour utiliser les flèches de navigation de chaque côté.
 
-watch(() => route.params.id, (newId) => { // Changer le id en temps réel sur le click, afin de pouvoir ensuite fetch la nouvelle page plus bas.
+watch(() => route.params.id, (newId) => { // Changer le id en temps réel sur le click, afin de pouvoir fetch la nouvelle page plus bas.
 idActuel.value = newId;
 chargerDetailsPersonnage(newId);
 });

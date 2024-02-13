@@ -28,13 +28,13 @@ h1{
 
 <script setup>
 
-import useFetchListePersonnagesRandom from '../composables/listePersonnagesRandom';
+import useFetchListeRandom from '../composables/listePersonnagesRandom';
 import { onMounted, ref } from 'vue';
 import cartePersonnage from './cartePersonnage.vue'; 
 import ficheZoom from '../components/modals/ficheZoom.vue';
 
 //utilise la composable du randomizer
-const { personnages, chargerListePersonnages } = useFetchListePersonnagesRandom();
+const { personnages, chargerListePersonnages } = useFetchListeRandom();
 
 const ouvrirPopUp = ref(false);
 const targetPersonnage = ref({});
