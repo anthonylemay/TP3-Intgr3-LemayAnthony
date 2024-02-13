@@ -7,9 +7,15 @@
                 <div class="flexCol">
                     <div class="headerPopUp">
                         <h2>{{ personnage.name }}</h2>
+                        <div flexCol>
                         <div class="closePopUp" @click="close" >
                         <img src="../../assets/img/closePopUp.svg">
                         </div>
+                        <div class="favorites" @click="handleFavClick" > 
+                        <img v-if="(favorite)" src="../../assets/img/favLike.svg">
+                        <img v-if="(!favorite)" src="../../assets/img/favDislike.svg">
+                        </div>
+                      </div>
                     </div>
                     <p v-if="personnage.status">Status: {{ personnage.status }}</p>
                     <p v-if="personnage.species">Espèce: {{ personnage.species }}</p>
@@ -17,7 +23,7 @@
                     <p v-if="personnage.gender">Genre: {{ personnage.gender }}</p>
                     <p v-if="personnage.origin && personnage.origin.name">Origine: {{ personnage.origin.name }}</p>
                     <p v-if="personnage.location && personnage.location.name">Localisation: {{ personnage.location.name }}</p>
-                    <button><RouterLink :to="{ name: 'fichePersonnage', params: { id: personnage.id }}">Fiche complète</RouterLink></button>
+                   <RouterLink :to="{ name: 'fichePersonnage', params: { id: personnage.id }}"> <button>Fiche complète</button></RouterLink>
 
             </div>
         </div>
@@ -27,6 +33,18 @@
 
   
   <script setup>
+
+import { defineProps, defineEmits, computed} from 'vue';
+import useToggleFavorite from '../../composables/favorites';
+
+const { toggleFavorite, isFavorite } = useToggleFavorite();
+  const favorite = computed(() => isFavorite(props.personnage.id));
+
+  function handleFavClick() {
+  toggleFavorite(props.personnage.id);
+  };
+
+
   const props = defineProps({
     personnage: Object,
     isVisible: Boolean
@@ -40,7 +58,31 @@
   </script>
   
   <style scoped>
+
+
+.favorites{
+  display:flex;
+      align-items:center;
+      justify-content:center;
+      width:40px;
+      border-radius:1.25rem;
+      cursor: pointer;
+      padding:1rem;
+      margin:.5rem;
+      box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
+    }
+  
+    .favorites img:hover{
+      width:30px;
+    }
+    .favorites img{
+      width:100%;
+    }
+
   .popUp {
+    display:flex;
+    align-items:center;
+    justify-content:center;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,7 +103,7 @@
     box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
   }
 
-  .closePopUp:hover{
+  .closePopUp img:hover{
     width:38px;
     
   }
@@ -115,6 +157,8 @@ a{
 all: unset;
 }
 .ficheZoom button{
+  align-items:right;
+  justify-content:center;
 all: unset;
 font-family: jost;
 font-weight:bold;
@@ -124,6 +168,7 @@ margin: 1rem;
 padding: 2rem;
 font-size:1.5rem;
 border-radius: 1rem;
+min-width:300px;
 
 box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
 border-radius: 4rem;

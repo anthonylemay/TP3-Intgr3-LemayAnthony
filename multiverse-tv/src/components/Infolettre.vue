@@ -1,6 +1,6 @@
 <template>
-
-<section id="newsletter" class="hero2">
+<div class="spacer"></div>
+<section v-if="(!successForm)" id="newsletter" class="hero2">
         <div class="heroContent">
             <div class="heroTextCard">
                 <div class="flexRow">
@@ -41,11 +41,29 @@
             </div>
         </div>
     </section>
+
+    <section v-else class="hero3">
+    <div class="heroContent">
+        <div class="heroTextCard">
+            <div class="flexRow">
+                <img class="iconSpace" src="../assets/img/notification.svg" alt="icône de notification">
+                <h1>INSCRIPTION RÉUSSIE!</h1>
+            </div>
+            <p>Vous recevrez un courriel de confirmation sous peu. À bientôt!</p>
+            <div class="flex flexRow btnLine">
+                    <a @click="resetForm" class="btnNav">Réinitialiser le formulaire</a>
+                </div>
+            </div>
+        </div>
+</section>
   </template>
 
   
 <style scoped>
 
+.spacer{
+  height:3rem;
+}
 
 p{
     color:white;
@@ -77,6 +95,44 @@ p{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.hero3{
+    border-radius:2rem;
+    background-image: url('../assets/img/infolettre-1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btnLine{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-bottom:4rem;
+}
+
+.btnNav{
+    font-family: jost;
+    font-weight:bold;
+    color: white;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: rgba(222, 222, 222, 0.2);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 27px 26px rgba(0,0,0,0.1);
+    border-radius: 2rem;
+    cursor: pointer; 
+}
+
+.btnNav:hover{
+    padding:2.5rem;
+    background-color: rgba(66,202,129, 0.8)
+}
+
+
 
 .iconSpace{
     margin:1rem;
@@ -158,7 +214,6 @@ form button:hover{
   <script setup>
   
   import { reactive, ref } from 'vue'
-  import { useRouter } from 'vue-router'
   
   const newSub = reactive({
     prenom: '',
@@ -173,8 +228,9 @@ form button:hover{
     }
   })
   
-  const router = useRouter()
-  
+  const successForm = ref(false);
+
+
   function valider() {
     
     const formData = {
@@ -184,6 +240,8 @@ form button:hover{
       checkBox: newSub.checkBox
     }
   
+
+
     resetErreurs()
 
     let valide = validateMail(formData)
@@ -192,7 +250,7 @@ form button:hover{
       ajoutUsager(formData)
       resetForm()
       console.log('usager ajoutée') // debug
-      router.push({ name: 'success-infolettre' })
+      successForm.value = true;
     }
   }
   
@@ -226,6 +284,7 @@ form button:hover{
     newSub.email = ''
     newSub.checkBox = false
     resetErreurs()
+    successForm.value = false
   }
   
   function resetErreurs() {

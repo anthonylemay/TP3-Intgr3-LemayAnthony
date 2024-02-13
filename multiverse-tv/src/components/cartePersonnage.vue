@@ -13,7 +13,6 @@
             <h2>{{ personnage.name }}</h2>
             <p v-if="personnage.status">État: {{ personnage.status }}</p>
             <p v-if="personnage.species">Espèce: {{ personnage.species }}</p>
-                      <!-- Ajouter ici bouton favoris ***** -->
             <button><RouterLink :to="{ name: 'fichePersonnage', params: { id: personnage.id }}">Fiche complète</RouterLink></button>
           </div>
         </div>    
@@ -40,7 +39,24 @@
       width:100%;
     }
   
+    .favorites{
+    position:absolute;
+    top: 0;
+    left:0;
+      width:40px;
+      border-radius:1.25rem;
+      cursor: pointer;
+      padding:1rem;
+      margin:.5rem;
+      box-shadow: 5px 5px 10px 1px rgb(206, 255, 253, 0.4);
+    }
   
+    .favorites:hover{
+      padding:2rem;
+    }
+    .favorites img{
+      width:100%;
+    }
 
   
   .cartePerso{
@@ -113,7 +129,7 @@
 
   <script setup>
   import { defineProps, defineEmits, computed} from 'vue';
-import useToggleFavorite from '@/composables/favorites';
+import useToggleFavorite from '../composables/favorites';
 
   const props = defineProps({
     personnage: Object
@@ -130,8 +146,6 @@ import useToggleFavorite from '@/composables/favorites';
 
   function handleFavClick() {
   toggleFavorite(props.personnage.id);
-  // Prévenir le pop-up
-  event.stopPropagation();
 }
 
   

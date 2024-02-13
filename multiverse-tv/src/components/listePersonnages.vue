@@ -4,7 +4,7 @@
     <div class="grid container">
       <cartePersonnage v-for="personnage in personnages" :key="personnage.name" :personnage="personnage" @ouvrirPopUp="ouvrirZoomModal"/>
       <ficheZoom :personnage="targetPersonnage" :isVisible="ouvrirPopUp" @update:isVisible="togglePopUpVisibility" />    
-    </div>    
+    </div>
 
   </section>
 </template>
@@ -15,12 +15,14 @@
 h1{
   text-align:center;
   font-size: 3rem;
+  padding: 3rem 0;
 }
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap: .25rem;
   width:100%;
+  padding-bottom: 8rem;
   
 }
 

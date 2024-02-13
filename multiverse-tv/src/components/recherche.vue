@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="minHeight">
     <div class="searchHeader">
       <h1>RECHERCHE PAR NOM</h1>
       <input type="text" id="nomPersonnage" placeholder="Tapez un nom. Ex. « Rick »" v-model="inputRecherche">
@@ -17,11 +17,16 @@
 
 <style scoped>
 
-
-h1{
-  font-size: 3rem;
+.minHeight{
+    min-height:100vh;
 }
 
+
+h1{
+  text-align:center;
+  font-size: 3rem;
+  padding-top: 3rem;
+}
 h3{
   font-family: space-grotesk;
   font-weight:bold;
@@ -55,12 +60,11 @@ input{
 }
 
 .grid{
-    min-height:500px;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .25rem;
     width:100%;
-    
+    margin-bottom: 8rem;
   }
 </style>
 
